@@ -1,7 +1,8 @@
 {
-  "name": "postcss_px_to_viewport_wasm_plugin",
-  "version": "1.0.0",
+  "name": "postcss_px_to_viewport_plugin_wasm",
+  "version": "1.0.1",
   "description": "Wasm-based unit conversion plug-in, suitable for mobile adaptation，Powerful performance！",
+  "homepage": "https://github.com/wkif/postcss-px-to-viewport-wasm-plugin",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
