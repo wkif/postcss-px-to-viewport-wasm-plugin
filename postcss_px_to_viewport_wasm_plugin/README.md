@@ -39,5 +39,14 @@ export default defineConfig({
 yarn add -D postcss_px_to_viewport_plugin_wasm
 ```
 
+```ts
+import { convert_px_to_vw } from "postcss_px_to_viewport_wasm_plugin";
 
+const res = convert_px_to_vw(str,{
+     viewportWidth: 750, // 750设计稿的viewport
+     ignoreUnitCase: true, // 转换单位是否忽略大小写
+     unitPrecision: 2, // 单元精度
+})
+
+```
 
