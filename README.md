@@ -6,47 +6,18 @@
 
 基于Wasm实现对html字符串中px单位的转换，配合 [postcss-px-to-viewport-8-plugin](https://www.npmjs.com/package/postcss-px-to-viewport-8-plugin)实现移动端适配，解决js正则替换实现方式对长文本处理时的性能问题。
 
-## Vite使用
-
-> https://cn.vitejs.dev/guide/features.html#webassembly
-
-### 安装vite-plugin-wasm
-
-> https://github.com/Menci/vite-plugin-wasm
-
-
-
-```
-yarn add -D vite-plugin-wasm
-yarn add -D vite-plugin-top-level-await
-```
-
-```
-import wasm from "vite-plugin-wasm";
-import topLevelAwait from "vite-plugin-top-level-await";
-
-export default defineConfig({
-  plugins: [
-    wasm(),
-    topLevelAwait()
-  ]
-});
-```
-
-安装本项目：
-
-```
-yarn add -D postcss_px_to_viewport_plugin_wasm
-```
 
 ```ts
-import { convert_px_to_vw } from "postcss_px_to_viewport_wasm_plugin";
+import { convertPxToVw } from "../build/release.js";
 
-const res = convert_px_to_vw(str,{
-     viewportWidth: 750, // 750设计稿的viewport
-     ignoreUnitCase: true, // 转换单位是否忽略大小写
-     unitPrecision: 2, // 单元精度
-})
+const str = `  <div class="box" style="width: 200px; height: 50px;"></div>
+<div class="box" style="width: 300px; height: 100px;"></div>
+<img src="http://upyun_test.huixiaoer.com/group-marketing/community_qa/2c813a17d726cbae95a590a8e5a80f7b.jpg" alt="" data-href="" style="width: 858.00px;height: 482.63px;">
+`;
+console.time();
+const res = convertPxToVw(str, 750, 4);
+console.timeEnd();
+console.log(res);
 
 ```
 
